@@ -3,6 +3,7 @@ const client = new Discord.Client();
 const config = require("./config.json")
 const token = config.token;
 const fs = require ("fs");
+client.commands = new Discord.Collection();
 require("./util/eventHandler")(client)
 
 
@@ -60,23 +61,5 @@ function LoadCmds(){
         });
     });
 }
-
-/*client.on('message', message => {
-
-    if(message.author.bot) return;
-    if(message.content.startsWith(prefix)) return;
-    if(message.channel.type === "dm") return;
-
-    let messageArray = message.content.split(" ");
-    let cmd = messageArray[0];
-    let args = messageArray.splice(1);
-
-    let commandfile = client.commands.get(cmd.slice(prefix.length))
-    if(commandfile) commandfile.run(client,message,args)
-});*/
-
-
-
 LoadCmds()
-
 client.login(token)

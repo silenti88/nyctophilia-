@@ -5,4 +5,5 @@ module.exports = client => {
     client.on("reconnecting", () => reqEvent("reconnecting")(client));
     client.on("disconnect", () => reqEvent("disconnect")(client)) 
     client.on("error",() => reqEvent("error")(client))
+    client.on("message", message => reqEvent("message")(client,message))
 }
