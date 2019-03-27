@@ -1,0 +1,8 @@
+{
+    "Discord.js Boilerplate": {
+        "prefix": "discord",
+        "body": "const Discord = require(\"discord.js\"); \n\nmodule.exports.run = async (bot, message, args) => {\n\n} \n\nmodule.exports.help = {\n   name: \"$1\"\n}",
+        "description": "Discord.js Boilerplate, Made by Gangster8192",
+        "scope": "javascript",
+    }
+}

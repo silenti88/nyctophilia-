@@ -4,7 +4,8 @@ const config = require("./config.json")
 const token = config.token;
 const fs = require ("fs");
 client.commands = new Discord.Collection();
-require("./util/eventHandler")(client)
+let invites = {}
+require("./util/eventHandler")(client,invites)
 
 
 
@@ -14,7 +15,7 @@ function format(word, spaces){
     for(i = word.length-spaces; i < spaces; i++){
         formated += " "
     }
-    return formated 
+    return formated ;
 }
 
 function LoadCmds(){
@@ -35,14 +36,12 @@ function LoadCmds(){
                         // The files created are shown in the terminal
                             let props = require(`./commands/`+directory+`/${f}`);
 
-                            dirCommands = format(directory, 7)
-                            dirCommands += `| ${f}`
+                            dirCommands = format(directory, 7);
+                            dirCommands += `| ${f}`;
                             console.log(dirCommands);
 
-                            client.commands.set(props.help.name, props);
-                            exports.help
                     });
-                    console.log("===============================")
+                    console.log("===============================");
                 });
 
             }else{
@@ -54,8 +53,6 @@ function LoadCmds(){
                     // The files created are shown in the terminal
                         let props = require(`./commands/${f}`); 
                         console.log(`${f} loaded!`);
-                        client.commands.set(props.help.name, props);
-                        exports.help
                 });
             }
         });
